@@ -1,162 +1,137 @@
 # Paper Research
 
-A reusable Agent Skill for academic literature reviews, research gap analysis, paper comparison, and research planning.
+**Paper Research** 是一个面向学术研究场景的 AI Skill，专注于文献综述、论文对比、研究空白分析和实验方案设计，适用于腾讯 WorkBuddy 桌面客户端。
 
-## Overview
+## 功能介绍
 
-**Paper Research** is a reusable skill designed to help AI agents conduct structured, evidence-based academic research.
+- **文献综述**：制定文献检索策略，梳理研究主题、核心概念与技术路线。
+- **论文对比**：从研究问题、方法、数据集、实验结果和局限性等维度系统比较论文。
+- **研究空白分析**：识别现有研究的不足，提出有证据支撑、值得进一步验证的研究方向。
+- **研究问题设计**：将宽泛的研究兴趣转化为明确、可验证的研究问题。
+- **实验方案规划**：设计实验目标、基线方法、评价指标、消融实验和风险控制方案。
+- **结构化报告**：按照统一模板输出研究分析报告，便于后续整理与修改。
 
-It provides a repeatable workflow for understanding a research topic, organizing related papers, identifying potential research gaps, and turning promising ideas into testable research questions.
+## 适用场景
 
-The skill follows the [Agent Skills specification](https://agentskills.io/specification) and is designed for compatible agent platforms.
+Paper Research 适用于以下任务：
 
-## Features
+- 开展某个研究主题的文献调研。
+- 比较不同论文的研究方法与实验结论。
+- 分析 RAG、Agentic RAG 和 AI 安全等领域的潜在研究方向。
+- 评估一个研究想法的创新性与可行性。
+- 制定论文复现计划和实验设计。
+- 整理研究现状、研究空白与未来工作。
 
-- **Literature Review** — Define research questions, organize relevant literature, and summarize research themes.
-- **Paper Comparison** — Compare research problems, methods, datasets, evaluation settings, findings, and limitations.
-- **Research Gap Analysis** — Identify potential gaps and distinguish evidence-backed findings from hypotheses.
-- **Research Planning** — Develop research questions, experimental designs, baselines, metrics, and ablation studies.
-- **Evidence-Based Reporting** — Use a consistent report structure and explicitly document uncertainty.
-- **Research Integrity** — Avoid fabricated citations, unsupported novelty claims, and unverified experimental results.
+## 安装方式
 
-## Project Structure
+本项目面向 **腾讯 WorkBuddy 桌面客户端**。
+
+### 方式一：从 GitHub 下载
+
+1. 打开本项目的 GitHub Releases 页面。
+2. 下载对应版本的 `paper-research-workbuddy-vX.Y.Z.zip` 安装包。
+3. 打开腾讯 WorkBuddy 桌面客户端。
+4. 进入「专家 · 技能 · 连接器」。
+5. 选择「添加技能」或客户端提供的本地技能上传入口。
+6. 选择下载的 ZIP 文件，并按照客户端提示完成安装。
+
+> 注意：请下载 Release 中专门提供的 WorkBuddy 安装包，不要直接上传 GitHub 自动生成的源码 ZIP。不同客户端版本的界面名称可能有所不同。
+
+**安装包下载：** 请前往本项目的 [Releases 页面](../../releases) 下载最新版本。
+
+### 方式二：从源码构建
+
+如果你希望自行修改或构建 Skill：
+
+1. 下载或克隆本仓库。
+2. 按照项目目录结构检查 `SKILL.md`、`references/` 和 `assets/`。
+3. 将需要发布的 Skill 文件打包成 ZIP。
+4. 确保压缩包内的 `SKILL.md` 和引用文件满足 WorkBuddy 的技能导入规范。
+5. 在 WorkBuddy 中上传 ZIP 并进行实际测试。
+
+## 使用示例
+
+安装后，可以在 WorkBuddy 中直接提出研究任务。
+
+### 示例一：文献综述
+
+```text
+请针对 Agentic RAG 中的多轮攻击开展文献综述。
+梳理主要攻击方式、防御方法、代表性论文及尚未解决的问题。
+请区分已被文献支持的结论与需要进一步验证的假设。
+```
+
+### 示例二：研究空白分析
+
+```text
+请分析 Trajectory-Aware Attacks against Agentic RAG
+这一研究方向的潜在创新点。
+
+比较相关研究的威胁模型、攻击目标、攻击过程和评价指标，
+判断哪些研究空白有文献证据支持，并提出可验证的研究问题。
+不要仅凭未检索到相关论文就断言某个方向是全新的。
+```
+
+### 示例三：论文对比
+
+```text
+请比较我提供的论文，从研究问题、核心方法、数据集、
+实验设置、主要结果和局限性等维度进行分析。
+请使用表格总结，并标明哪些信息尚未核实。
+```
+
+### 示例四：实验方案设计
+
+```text
+请为一个多轮 RAG 安全攻击研究设计实验方案。
+包括威胁模型、研究假设、基线方法、数据集、评价指标、
+消融实验、复现要求和潜在伦理风险。
+```
+
+## 项目结构
 
 ```text
 paper-research/
-├── SKILL.md
-├── references/
-│   └── research-method.md
-├── assets/
-│   └── report-template.md
-├── tests/
-│   └── test-cases.md
-└── README.md
+├── README.md
+ paper-research/
+        ├── SKILL.md
+        ├── references/
+        │   └── research-method.md
+        ├── assets/
+        │   └── report-template.md
 ```
 
-| File | Description |
-|---|---|
-| `SKILL.md` | Skill metadata, instructions, workflow, and usage guidance |
-| `references/research-method.md` | Literature comparison, research gap taxonomy, and experiment planning methods |
-| `assets/report-template.md` | Reusable research report template |
-| `tests/test-cases.md` | Manual test cases for evaluating expected behavior |
-| `README.md` | Project overview and usage instructions |
+如果你的仓库仍然将 `SKILL.md` 放在根目录，请根据实际结构调整上面的目录树。
 
-## Installation
+## 质量与可信度原则
 
-### Option 1: Clone from GitHub
+Paper Research 遵循以下原则：
 
-Replace `YOUR_USERNAME` with your GitHub username.
+1. **不编造文献**：不得虚构论文标题、作者、发表 venue、DOI 或实验结果。
+2. **明确证据来源**：区分论文直接支持的结论、综合分析得到的判断与待验证假设。
+3. **谨慎判断创新性**：研究空白必须结合相关工作、检索范围和证据进行评估。
+4. **承认能力限制**：如果当前环境无法联网检索或访问全文，应明确说明，不得声称已经完成未执行的检索。
+5. **强调可复现性**：实验方案应尽可能明确数据、基线、参数、评价指标和复现条件。
 
-```bash
-git clone https://github.com/YOUR_USERNAME/paper-research.git
-cd paper-research
-```
+## 版本与更新
 
-### Option 2: Install into a Compatible Agent
+请通过 GitHub Releases 获取正式发布的版本，并优先使用带版本号的安装包。
 
-This project follows the Agent Skills directory format.
+更新时：
 
-To use it, place the complete `paper-research` directory in a Skills discovery directory supported by your agent.
+1. 下载新版本安装包。
+2. 根据 WorkBuddy 当前版本支持的方式更新或重新导入。
+3. 检查 Skill 是否能够正常触发，并确认引用文件可用。
 
-The exact installation path depends on the host platform. Consult your agent's documentation for its supported Skills directory and loading behavior.
+## 反馈与贡献
 
-Keep the entire directory structure intact so that the agent can access the reference guide and report template.
+欢迎提交问题、改进建议和功能需求。反馈时请尽量提供：
 
-## Usage
+- 使用的 WorkBuddy 版本。
+- 复现问题的具体步骤。
+- 预期行为与实际行为。
+- 相关错误提示（注意删除密钥、个人信息等敏感内容）。
 
-Once the skill is installed and recognized by a compatible agent, try the following prompts.
+## 许可证
 
-### Example 1: Literature Review
-
-```text
-Review the literature on multi-turn attacks against RAG systems.
-
-Identify relevant research themes, compare existing approaches,
-and summarize the current state of the field.
-```
-
-### Example 2: Research Gap Analysis
-
-```text
-Analyze potential research gaps in trajectory-aware attacks
-against agentic RAG systems.
-
-Compare related work, examine alternative terminology,
-and distinguish evidence-backed gaps from hypotheses.
-```
-
-### Example 3: Paper Comparison
-
-```text
-Compare these five papers in terms of research objectives,
-methods, datasets, evaluation metrics, findings, and limitations.
-```
-
-### Example 4: Experimental Design
-
-```text
-Based on the identified research gaps, propose an experimental plan.
-
-Include research questions, hypotheses, baselines, datasets,
-evaluation metrics, controls, ablation studies, and limitations.
-```
-
-## Research Workflow
-
-The skill follows a structured research process:
-
-1. Define the research question and scope.
-2. Identify keywords, synonyms, and related terminology.
-3. Plan and conduct literature searches using available tools.
-4. Verify paper metadata and source evidence.
-5. Compare existing research methods and findings.
-6. Identify and validate candidate research gaps.
-7. Prioritize potential research directions.
-8. Design experiments to test the proposed hypotheses.
-9. Produce a structured research report.
-10. Review citations, uncertainty, and limitations.
-
-## Important Limitations
-
-- The skill does not independently provide web search, academic database access, or full-text access.
-- Live literature searches require compatible search tools or other accessible research sources.
-- Findings based only on abstracts must be labeled accordingly.
-- A missing search result does not prove that a research idea is novel.
-- Citations, publication details, and research claims should be verified against reliable sources.
-- Research gap suggestions are hypotheses until sufficiently validated against prior work.
-
-## Testing
-
-Review the manual test cases in `tests/test-cases.md`.
-
-Basic checks should verify that:
-
-- The skill metadata is valid.
-- Required files are present.
-- Referenced resources are accessible.
-- The agent follows the research workflow.
-- Unsupported citations and novelty claims are not presented as established facts.
-
-Static checks alone do not guarantee correct behavior. Test the skill inside the intended host agent as well.
-
-## Contributing
-
-Suggestions, issue reports, and improvements are welcome.
-
-When proposing changes, please prioritize:
-
-- Clear and reusable research instructions.
-- Reliable citation and evidence handling.
-- Reproducible research workflows.
-- Useful test cases.
-- Compatibility with the Agent Skills specification.
-
-## License
-
-No license has been selected yet.
-
-Before redistributing this project, add a `LICENSE` file specifying the terms under which others may use, modify, and redistribute it.
-
-## Disclaimer
-
-This skill assists with research organization and analysis. It does not guarantee literature coverage, research novelty, or the correctness of every generated conclusion. Important findings should be independently verified.
+本项目的使用与分发规则以仓库中的 `LICENSE` 文件为准。
